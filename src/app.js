@@ -1,10 +1,23 @@
 const express = require("express");
-const path = require("path");
 const mongoose = require("mongoose");
-const app = express();
-app.use(express.json());
+const path = require("path");
+
 const { createRouter } = require("./routes/create");
+const { signinRouter } = require("./routes/signin");
+
+
+const app = express();
+
+app.use(express.json());
+app.use(express.static(path.join(__dirname, "public")));
+
+
 app.use(createRouter);
+app.use(signinRouter);
+
+
+app.use(express.json());
+app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/",(req, res)=>{
     res.sendFile(path.join(__dirname,"./views/app.html"));
@@ -32,8 +45,7 @@ app.get("/Bracelets",(req, res)=>{
   res.sendFile(path.join(__dirname,"./views/bracelets.html"));
 })
 
-app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));
+
 
 const start = async () => {
   await mongoose.connect("mongodb://127.0.0.1:27017/products");

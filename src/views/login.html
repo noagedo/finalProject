@@ -9,21 +9,24 @@
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
   <link href="login&signup.css" rel="stylesheet">
   <script src="app.js"> </script>
-  <script src="login.js"></script>
+  
+  
   <title>login</title>
 </head>
 
 <body>
   <header>
     <span>
-        <a href="/login"><i class="fa fa-user" style="font-size:32px;"></i></a>&nbsp
+      <a href="/login" class='fa fa-user' style='font-size: 32px;'></a> &nbsp
       <i class="fa fa-shopping-cart" style='font-size: 32px;'></i> &nbsp
       <i class='fa fa-heart-o' style='font-size: 32px;'></i> &nbsp
     </span>
+     
+    <p class="username"></p>
 
     <div>
       <canvas id="myCanvas" width="300" height="100"> </canvas>
-      <img id="logoImage" src="logo picture.webp" style="width: 150px; height: 150px;">
+      <img id="logoImage" src="logo%20picture.webp" style="width: 150px; height: 150px;">
     </div>
 
   </header>
@@ -31,54 +34,54 @@
 
   <div class="topnav">
 
-    <a class="active" href="#home">Home</a>
+    <a class="active" href="/">Home</a>
 
     <div class="dropdown">
-      <a href="#Rings" class="dropbtn">Rings</a>
+      <a href="/Rings" class="dropbtn">Rings</a>
       <div class="dropdown-content">
-        <a href="#">Silver rings</a>
-        <a href="#">Gold rings</a>
-        <a href="#">wedding rings</a>
+        <a href="/Silver rings">Silver rings</a>
+        <a href="/Gold rings">Gold rings</a>
+        <a href="/Wedding rings">Wedding rings</a>
       </div>
     </div>
 
     <div class="dropdown">
-      <a href="#Necklaces" class="dropbtn">Necklaces</a>
+      <a href="/Necklaces" class="dropbtn">Necklaces</a>
       <div class="dropdown-content">
-        <a href="#">Silver necklaces</a>
-        <a href="#">Gold necklaces</a>
-        <a href="#">Pearls necklaces</a>
+        <a href="/Silver necklaces">Silver necklaces</a>
+        <a href="/Gold necklaces">Gold necklaces</a>
+        <a href="/Pearls necklaces">Pearls necklaces</a>
       </div>
     </div>
 
     <div class="dropdown">
-      <a href="#Bracelets" class="dropbtn">Bracelets</a>
+      <a href="/Bracelets" class="dropbtn">Bracelets</a>
       <div class="dropdown-content">
-        <a href="#">Silver bracelets</a>
-        <a href="#">Gold bracelets</a>
-        <a href="#">Anklets</a>
+        <a href="/Silver bracelets">Silver bracelets</a>
+        <a href="/Gold bracelets">Gold bracelets</a>
+        <a href="/Anklets">Anklets</a>
       </div>
     </div>
 
 
-    <a href="#BEST SELLERS">BEST SELLERS</a>
+    <a href="/BEST SELLERS">BEST SELLERS</a>
 
-    <a href="#SALE">SALE</a>
+    <a href="/SALE">SALE</a>
 
-    <a href="#contact">Contact</a>
+    <a href="/Contact">Contact</a>
 
-    <a href="#About">About</a>
+    <a href="/About">About</a>
 
-    <a href="#about">Admin</a>
+    <a href="/Admin">Admin</a>
 
   </div>
 
-<br>
-<div class="search-container">
-    <i class="fa fa-search"></i>
-    <input type="text" id="searchbar" name="fname" placeholder="search">
+
+  <div>
+    <br>
+    <i class='fa fa-search'></i>
+    <input type="text" id="searchbar" name="fname" placeholder="Search products"></input>
   </div>
-<br>
 
 <div class="container-signup">
     <h1 class="container-h" >My Account</h1><br>
@@ -90,7 +93,23 @@
   <div class="container">
     <h1 class="form-title">Login</h1>
     <form action="#" id="login-form">
-      <div class="main-user-info">
+      <title>Sign in</title>
+      <p class="title">Please sign in</p>
+      <div class="thing">
+        <input type="email" class="boxes" id="email" placeholder="Enter Email" />
+        <input
+          type="password"
+          class="boxes"
+          id="password"
+          placeholder="Enter Password"
+        />
+        <div class="btns">
+          <button type="button" id="signin" class="btn btn-primary">
+            sign in
+          </button>
+        </div>
+      </div>
+      <!--<div class="main-user-info">
         <div class="user-input-box">
           <label for="username">Username</label>
           <input type="text" id="username" name="username" placeholder="Enter Username" required>
@@ -102,10 +121,11 @@
           <div class="error-message" id="password-error"></div>
         </div>
         <div class="register">Don't have an account? <a class="register" href="/signup">sign up here</a></div>
-      </div>
-      <div class="form-submit-btn">
-        <input type="submit" value="Login">
-      </div>
+      </div>-->
+      <!--<div class="form-submit-btn">
+        <button type="submit">Login</button>
+
+      </div>-->
     </form>
   </div>
   <br>
@@ -116,9 +136,6 @@
   </div>
 
  
-
-
-
   <footer class="Contact">
     <div class="col">
       <h4>Contact</h4>
@@ -172,4 +189,7 @@
   </div>
 
 </body>
+<script src="signin.js"></script>
+
+
 </html>
