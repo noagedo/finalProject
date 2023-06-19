@@ -1,4 +1,5 @@
 const express = require("express");
+const multer = require("multer");
 const mongoose = require("mongoose");
 const path = require("path");
 
@@ -11,8 +12,41 @@ const app = express();
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
-
+app.use(signinRouter);
 app.use(createRouter);
+app.use(express.static('../views/app'));
+
+const Product = require("./models/product");
+
+//create button for manger
+const upload = multer({ dest: "public/img" });
+
+app.post("/api/upload", upload.single("file"), (req, res) => {
+  // starting to upload only to rings
+  const targetHtmlPath = path.join(__dirname, "public", "rings.html");
+  res.sendFile(targetHtmlPath);
+});
+app.use(upload.single("file"));
+app.use(createRouter);
+app.post("/api/upload", (req, res) => {
+  // File upload is complete, send the file name back to the client
+  res.json({ fileName: req.file.filename });
+});
+
+app.post("/api/createProduct", async (req, res) => {
+  const { image,title,price } = req.body;
+  const isExist = await Product.findOne({ title });
+  if (isExist) {
+    return res.send("Title already in use");
+  }
+  const product = new Product({
+   image,
+   title,
+   price,
+  });
+  await product.save();
+  res.send(product);
+});
 app.use(signinRouter);
 
 
@@ -44,13 +78,16 @@ app.get("/Necklaces",(req, res)=>{
 app.get("/Bracelets",(req, res)=>{
   res.sendFile(path.join(__dirname,"./views/bracelets.html"));
 })
+app.get("/Admin",(req, res)=>{
+  res.sendFile(path.join(__dirname,"./views/admin.html"));
+})
 
 
 
 const start = async () => {
   await mongoose.connect("mongodb://127.0.0.1:27017/products");
 
-  app.listen(4000, () => {
+  app.listen(3300, () => {
     console.log("Servers up");
   });
 };
